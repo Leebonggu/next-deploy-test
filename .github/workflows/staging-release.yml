@@ -4,6 +4,7 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   push:
+    branches:
       - staging
 jobs:
   Deploy-Preview:
@@ -18,5 +19,3 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
-
-        VERCEL_TOKEN = WM6Q6wu4jvmJWxX7uuCyTYud
