@@ -9,7 +9,7 @@ function useMode() {
         ? window.location.origin
         : '';
     
-    const mode = origin.includes('dev') ? 'dev' : origin.includes('staging') ? 'staging' : 'prod'
+    const mode = origin.split('.')[0].includes('dev') ? 'dev' : origin.includes('staging') ? 'staging' : 'prod'
     
     setMode(mode)
   }, [])
