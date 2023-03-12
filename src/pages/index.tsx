@@ -21,7 +21,7 @@ export default function Home() {
       </Head>
       <main className={inter.className}>
         this is {mode}
-      </main>
+      <main>
     </>
   )
 }
