@@ -14,15 +14,17 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          cache: pnpm
+          always-auth: true
       - uses: pnpm/action-setup@v2
         name: Install pnpm
-        id: pnpm-install
+      - uses: pnpm/action-setup@v2
         with:
           version: 7
-          run_install: false
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
       - name: Install Vercel CLI
-        run: pnpm add --global vercel@latest
+        run: pnpm add -g vercel@latest
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
