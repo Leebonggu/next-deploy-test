@@ -1,16 +1,13 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import { useRouter } from 'next/router'
+import useMode from '@/hooks/useMode'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const origin =
-  typeof window !== 'undefined' && window.location.origin
-      ? window.location.origin
-      : '';
-  
-  const mode = origin.includes('dev') ? 'dev' : origin.includes('staging') ? 'staging' : 'prod'
+
+  const mode = useMode()
+
   return (
     <>
       <Head>
