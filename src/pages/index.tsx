@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import useMode from '@/hooks/useMode'
+import useMode2 from '@/hooks/useMode2'
+import { AppContext } from 'next/app'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-
-  const mode = useMode()
-
+export default function Home({ mode }: { mode: ReturnType<typeof useMode2> }) {
+  const clientMode = useMode()
   return (
     <>
       <Head>
@@ -17,8 +17,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        this is {mode}
+        <h1>
+          this is {mode}-{clientMode}
+        </h1>
       </main>
     </>
   )
+}
+
+export const getServerSideProps = async(context: AppContext) => {
+  return {
+    props: {
+      mode: process.env.NODE_ENV
+    }
+  }
 }
