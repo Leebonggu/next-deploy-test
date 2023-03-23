@@ -18,7 +18,7 @@ export default function Home({ mode }: { mode: ReturnType<typeof useMode2> }) {
       </Head>
       <main className={inter.className}>
         <h1>
-          this is {mode}-{clientMode}
+          this is {mode}-{clientMode}-man
         </h1>
       </main>
     </>
