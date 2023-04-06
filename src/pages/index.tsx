@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ mode }: { mode: ReturnType<typeof useMode2> }) {
   const clientMode = useMode()
+  const env = process.env.NODE_ENV
   return (
     <>
       <Head>
@@ -18,6 +19,7 @@ export default function Home({ mode }: { mode: ReturnType<typeof useMode2> }) {
       </Head>
       <main className={inter.className}>
         <h1>
+          current:{env}
           this is {mode}-{clientMode}-man
         </h1>
       </main>
